@@ -1,5 +1,7 @@
 /.idea
+.DS_Store
 /.vscode
+*.pyc
 test3.cev
 axios.js
 d3.js

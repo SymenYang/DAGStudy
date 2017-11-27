@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+{% raw %}
+<script src="/static/js/d3.js" charset="utf-8"></script>
+<script src="/static/js/vue.js"></script>
+<script src="/static/js/axios.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/box.css">
+<link rel="stylesheet" type="text/css" href="/static/css/nameBox.css">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>DAGStudy</title>
+    <style>
+        .test-enter,
+        .test-leave-active {
+            opacity: 0;
+            transform: translate3d(0, 20%, 0);
+        }
+
+        .test-enter-active,
+        .test-leave-active {
+            transition: all .5s cubic-bezier(0.4, 0, 0, 1.5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="name-box" id="name-shower">
+        <div class="name-box-sidder">
+            <a v-on:click="toggleLog">{{userName}}<a>
+    </div>
+    <div class = "name-box-right">
+        <a v-on:click="restart">Regraph</a>
+        </div>
+    </div>
+
+    <div id="login-box">
+        <transition name="test">
+            <div v-if="show" class="box">
+                <h2>Login<a class="close" v-on:click="unshowBox">X</a></h2>
+                <div class="login-box">
+                    <form action="/api/login/" method="post">
+                        <h3>User Name</h3>
+                        <input type="text" name="USERNAME" v-model="userName" /><br><br>
+                        <h3>Password</h3>
+                        <input type="password" name="PWD" v-model="password" /><br><br>
+                        <input class="submit-button" type="button" v-on:click="submit" value="Submit" /><br><br>
+                        <input class="submit-button" type="button" v-on:click="register" value="Register" /><br>
+                    </form>
+                    <h5>{{ error }}</h5>
+                </div>
+            </div>
+        </transition>
+    </div>
+
+    <div class="box" id="register-box" v-if="show">
+        <h2>Register<a class="close" v-on:click="unshowBox">X</a></h2>
+        <div class="login-box">
+            <form action="/api/register" method="post">
+                <h3>User Name</h3>
+                <input type="text" name="USERNAME" v-model="userName" /><br><br>
+                <h3>Password</h3>
+                <input type="password" name="PWD" v-model="password" /><br>
+                <h3>Repeat Password</h3>
+                <input type="password" name="RePWD" v-model="repassword" /><br>
+                <input class="submit-button" type="button" v-on:click="submit" value="Submit" />
+            </form>
+            <h5>{{ error }}</h5>
+        </div>
+    </div>
+
+    <div id="point-shower">
+        <transition name="test">
+            <div class="box" v-if="show">
+                <h2>{{title}}<a class="close" v-on:click="unshowBox">X</a></h2>
+                <div class="box-sidder">
+                    <h3>{{percent}}%</h3>
+                    <p>{{status}}</p>
+                    <button v-on:click="setAsTarget" v-if="percent == 0 && type == 0">设为目标</button>
+                </div>
+                <div class="box-right">
+                    <h4>简介</h4>
+                    <p><br>{{introduction}}</p><br>
+                    <h4>学习资料</h4>
+                    <li v-for="lin in links" class="link-list">
+                        <a v-bind:href="lin.link" target="_blank">{{ lin.link }}</a><br>
+                    </li>
+                    <h4>{{ practice }}</h4>
+                    <form class="problem">
+                        <li v-for="pr in problems">
+                            {{ pr.text }}
+                            <br>
+                            <input type="radio" v-bind:name="pr.ID" v-model="userAns[pr.ID]" value="1" />{{ pr.textA }}<br>
+                            <input type="radio" v-bind:name="pr.ID" v-model="userAns[pr.ID]" value="2" />{{ pr.textB }}<br>
+                            <input type="radio" v-bind:name="pr.ID" v-model="userAns[pr.ID]" value="3" />{{ pr.textC }}<br>
+                            <input type="radio" v-bind:name="pr.ID" v-model="userAns[pr.ID]" value="4" />{{ pr.textD }}<br>
+                        </li>
+                    </form>
+                    <input class="submit-button" type="button" v-on:click="submit" value="Submit" v-if="showProblem" />
+                </div>
+            </div>
+        </transition>
+    </div>
+</body>
+
+</html>
+<script>
+    //    clean();
+    window.onload = function () {
+        axios.post('/api/getDAG', {
+            username: "Login"
+        })
+            .then(function (response) {
+                var l = response.data.length;
+                for (var j = 0; j < l; ++j) {
+                    nodes.push({ ID: response.data[j].ID, name: response.data[j].name, proc: response.data[j].proc, type: response.data[j].type });
+                }
+                //               console.log(response.data);
+            });
+
+        axios.get('/api/getRelation')
+            .then(function (responce) {
+                //               console.log(responce.data);
+                var l = responce.data.length;
+                for (var k = 0; k < l; ++k) {
+                    edges.push({ source: responce.data[k].source, target: responce.data[k].target });
+                }
+                update();
+            });
+    };
+
+</script>
+<script src="/static/js/nameBox.js"></script>
+<script src="/static/js/registerBox.js"></script>
+<script src="/static/js/loginBox.js"></script>
+<script src="/static/js/DAG.js"></script>
+<script src="/static/js/Box.js"></script>
+{% endraw %}
