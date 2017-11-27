@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% raw %}
+<html lang="en">
+<script src="/static/js/vue.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .test-enter,.test-leave-active{
+            opacity: 0;
+            transform: translate3d(0,20%,0);
+        }
+
+        .test-enter-active,.test-leave-active{
+            transition:all .5s cubic-bezier(0.4,0,0,1.5);
+        }
+
+        .fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
+}
+    </style>
+
+</head>
+<body>
+
+
+<div id="demo">
+  <button v-on:click="show = !show">
+    Toggle
+  </button>
+  <transition name="test">
+      <div v-if = "show">
+        <p>hello</p>
+        <p>test</p>
+      </div>
+  </transition>
+</div>
+
+</body>
+
+<script>
+   var a = new Vue({
+  el: '#demo',
+  data: {
+    show: false
+  }
+})
+</script>
+</html>
+{% endraw %}

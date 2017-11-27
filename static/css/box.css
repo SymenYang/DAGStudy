@@ -1,0 +1,175 @@
+svg{
+/*    background-image: url("/static/test3.jpg");
+    background-position: -300px -100px;*/
+    background: #272822;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    background: #4E1892;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.overlay {
+    fill: none;
+    pointer-events: all;
+}
+
+.box {
+    position:absolute;
+    left:250px;
+    right:250px;
+    top:150px;
+    bottom : 150px;
+    z-index:100;
+    background-color:#3e3d32;
+    opacity:0.75;
+    border:1px #e6db74 solid;
+    border-radius:10px;
+    word-wrap:break-word;
+    word-break:break-all;
+    overflow-y : auto;
+    text-align: center;
+    color : #f8f8f2;
+}
+
+.box-sidder {
+    position:absolute;
+    font-size:25px;
+    left: 0;
+    top: 45px;
+    bottom: 0;
+    width: 200px;
+    z-index:101;
+    fill:none;
+    border: 1px #e6db74 solid;
+    word-wrap:break-word;
+    word-break:break-all;
+    overflow-y : auto;
+    color : #f8f8f2;
+    text-align:center;
+}
+
+.box-sidder h3 {
+    font-size:70px;
+}
+
+.box-right{
+    position:absolute;
+    font-size:25px;
+    left: 200px;
+    right : 0;
+    top: 45px;
+    bottom: 0;
+    z-index:101;
+    fill:none;
+    border: 1px #e6db74 solid;
+    word-wrap:break-word;
+    word-break:break-all;
+    overflow-y : auto;
+    color : #f8f8f2;
+}
+
+.box-right p {
+    position: relative;
+    font-size:15px;
+    top:10px;
+}
+
+.box-right h4 {
+
+}
+
+.box button {
+    position:relative;
+    top:100px;
+    font-size:25px;
+    text-align:center;
+    color : #f8f8f2;
+    border-radius:10px;
+}
+
+.box h2 {
+    height: 38px;
+    font-size: 30px;
+    background-color: #919383;
+    position: relative;
+    padding-left: 10px;
+    padding-top : 7px;
+    line-height: 25px;
+    color: #f8f8f2;
+}
+
+.box h2 a {
+    position:absolute;
+    right:5px;
+    font-size:30px;
+    color:#f8f8f2;
+}
+
+.box li a{
+    color: #f8f8f2;
+}
+
+.box .list{
+    padding:10px;
+}
+
+.box li{
+    font-size :12px;
+    height:124px;
+    line-height:24px;
+}
+
+.box .link-list{
+    font-size :12px;
+    height:24px;
+    line-height:24px;
+}
+
+.box li span{
+    margin:0 5px 0 0;
+    font-size:12px;
+    font-weight:400;
+    color:#f8f8f2;
+}
+
+.box input {
+    position : relative;
+    top:0;
+    width : 300px;
+    font-size:20px;
+    border-radius:10px;
+}
+
+.login-box {
+    position:absolute;
+    left:0;
+    right:0;
+    top:100px;
+    bottom:0;
+}
+.box h5 {
+    position : absolute;
+    top : 250px;
+    left : 0;
+    right : 0;
+}
+
+.submit-button{
+    position:relative;
+    color : #f8f8f2;
+    background: none;
+    top:20px;
+}
+
+.problem{
+    font-size:14px;
+    position: relative;
+    left : 75px;
+    text-align: left;
+}

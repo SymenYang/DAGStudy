@@ -1,0 +1,15 @@
+POINT,开始,从这里你将开始学习全新的课程，祝您成功,end,,,,
+PROBLEM,简单的测试，这道题选A,A,B,C,D,1,end
+PROBLEM,简单的测试，这道题选B,A,B,C,D,2,end
+PROBLEM,简单的测试，这道题选C,A,B,C,D,3,end
+PROBLEM,简单的测试，这道题选D,A,B,C,D,4,end
+LINK,www.baidu.com,end,,,,,
+LINK,www.google.com,end,,,,,
+POINT,知识点1,这是第一个知识点，这个知识点是个测试,end,,,,
+PROBLEM,简单的测试，这道题选A,A,B,C,D,1,end
+PROBLEM,简单的测试，这道题选B,A,B,C,D,2,end
+PROBLEM,简单的测试，这道题选C,A,B,C,D,3,end
+PROBLEM,简单的测试，这道题选D,A,B,C,D,4,end
+LINK,www.baidu.com,end,,,,,
+LINK,www.google.com,end,,,,,
+RELATION,1,,,,,,
